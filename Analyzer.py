@@ -30,7 +30,6 @@ class Analyzer:
         self.nextChar()
         try:
             while True:
-                print(f"Token processing... {self.current}")
                 # Checks if current token is whitespace character
                 if self.current in whitespace:
                     # Increments the whitespace character counter
