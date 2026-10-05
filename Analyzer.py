@@ -1,4 +1,5 @@
 from string import whitespace
+from operator import itemgetter
 
 class Analyzer:
     def __init__(self, file):
@@ -106,12 +107,23 @@ class Analyzer:
         self.nextChar()
 
     def getResults(self):
+        # Sort the word count dictionary by frequency in descending order
+        sorted_words = sorted(self.word_count.items(), key=itemgetter(1), reverse=True)
+        # Sort the letter count dictionary by frequency in descending order
+        sorted_letters = sorted(self.letter_count.items(), key=itemgetter(1), reverse=True)
+        # Sort the digit count dictionary by frequency in descending order
+        sorted_digits = sorted(self.digit_count.items(), key=itemgetter(1), reverse=True)
+        # Sort the number count dictionary by frequency in descending order
+        sorted_numbers = sorted(self.number_count.items(), key=itemgetter(1), reverse=True)
+        # Sort the symbol count dictionary by frequency in descending order
+        sorted_symbols = sorted(self.symbol_count.items(), key=itemgetter(1), reverse=True)
+
         self.final_totals = {
-            "letter_count": self.letter_count,
-            "word_count": self.word_count,
-            "digit_count": self.digit_count,
-            "number_count": self.number_count,
-            "symbol_count": self.symbol_count,
+            "letter_count": dict(sorted_letters),
+            "word_count": dict(sorted_words),
+            "digit_count": dict(sorted_digits),
+            "number_count": dict(sorted_numbers),
+            "symbol_count": dict(sorted_symbols),
             "letter_count_total": self.letter_count_total,
             "whitespace_char_count": self.whitespace_char_count,
             "word_count_total": self.word_count_total,
