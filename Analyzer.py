@@ -60,6 +60,7 @@ class Analyzer:
 
     def nextChar(self):
         self.current = self.file.read(1)
+        self.current = self.current.lower()
         if not self.current:
             self.current = "EOS"
 
